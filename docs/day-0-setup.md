@@ -113,3 +113,32 @@ git remote -v
 ```
 
 Do not add the same origin again.
+
+## GitHub SSH Authentication
+
+### Problem
+
+Pushing with HTTPS failed because GitHub does not support password authentication for Git operations.
+
+### Error
+
+```text
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed
+```
+
+### Fix
+
+Use SSH instead of HTTPS.
+
+Commands used:
+
+```bash
+ssh -T git@github.com
+git remote set-url origin git@github.com:Aymanabdelkireem/devops-production-lab.git
+git push -u origin main
+```
+
+### Result
+
+SSH authentication worked successfully and the local `main` branch was pushed to GitHub.
